@@ -1,6 +1,8 @@
 package RamdaPractice;
 
 import static java.awt.Color.*;
+import static java.util.Comparator.*;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -21,6 +23,7 @@ public class ComparatorPractice {
                 return o1.getWeight().compareTo(o2.getWeight());
             }
         });
+        storage.sort(comparing(Apple::getWeight));
 
         for(Apple a : storage){
             System.out.println(a.getWeight());
