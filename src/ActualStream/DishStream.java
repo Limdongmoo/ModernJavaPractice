@@ -2,6 +2,9 @@ package ActualStream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
 
 public class DishStream {
     public static void main(String...args){
@@ -16,5 +19,16 @@ public class DishStream {
                 new Dish("prawns", false, 300, Dish.Type.FISH),
                 new Dish("salmon", false, 450, Dish.Type.FISH)
         );
+
+        List<Dish> lowCaloriesMenu = menu.stream()
+                .filter(dish -> dish.getCalories() < 400)
+                .sorted(comparing(Dish::getCalories))
+                .collect(Collectors.toList());
+
+        for(Dish d : lowCaloriesMenu){
+            System.out.print(d.getCalories()+", ");
+            System.out.println(d);
+        }
     }
+
 }
